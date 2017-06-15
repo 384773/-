@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/04/17 10:12:30.000.250,=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:16:29.490,=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/06/15 15:22:17.201,D:\Delphi_SRC\淘宝优惠券\src\Synchronization\pasMain.pas=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/06/15 15:22:17.201,D:\Delphi_SRC\淘宝优惠券\src\Synchronization\pasMain.dfm=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2017/06/15 15:22:25.522,D:\Delphi_SRC\淘宝优惠券\src\Synchronization\Synchronization.dproj=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

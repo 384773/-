@@ -1,0 +1,17 @@
+unit Alimama_Const;
+
+interface
+  uses
+    System.SysUtils,System.Classes, Data.FireDACJSONReflect;
+  var                                                             //程序全局变量
+    Var_Params : TStringList;                                     //请求参数列表
+  const
+    Const_AppKey = '24321992';                                    //AppKey
+    Const_AppSecret = 'efd4cf9cac64e69b74d185646058dafc';         //AppSecret
+    Const_RequestUrl = 'http://gw.api.taobao.com/router/rest?';   //请求地址
+implementation
+  initialization
+    Var_Params := TStringList.Create;
+  finalization
+    FreeAndNil(Var_Params);
+end.

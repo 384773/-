@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B4996A85-1F14-45AC-93AA-F5370E6DD18A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Acquisition\Acquisition.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Synchronization\Synchronization.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Acquisition">
+        <MSBuild Projects="Acquisition\Acquisition.dproj"/>
+    </Target>
+    <Target Name="Acquisition:Clean">
+        <MSBuild Projects="Acquisition\Acquisition.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Acquisition:Make">
+        <MSBuild Projects="Acquisition\Acquisition.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Synchronization">
+        <MSBuild Projects="Synchronization\Synchronization.dproj"/>
+    </Target>
+    <Target Name="Synchronization:Clean">
+        <MSBuild Projects="Synchronization\Synchronization.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Synchronization:Make">
+        <MSBuild Projects="Synchronization\Synchronization.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Acquisition;Synchronization"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Acquisition:Clean;Synchronization:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Acquisition:Make;Synchronization:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

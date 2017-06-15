@@ -1,0 +1,40 @@
+unit TOPAPI;
+
+interface
+uses
+  IdHTTP, Web.HTTPApp;
+
+  procedure btn1Click(Sender: TObject);
+
+
+implementation
+
+function  URLEncode(const S:String; const InQueryString: Boolean): string;
+var
+  Idx: Integer;
+begin
+  Result := '';
+  for Idx := 1 to Length(S) do
+  begin
+      case S[Idx] of
+        'A'..'Z', 'a'..'z', '0'..'9', '-', '_', '.', '=', '&', '%', '/':
+          Result := Result + S[Idx];
+        ' ':
+          if InQueryString then
+            Result := Result + '+'
+          else
+            Result := Result + '%20';
+        ',':
+           Result :=Result + '%2C';
+        ':':
+           Result := Result + '%3A';
+      else
+          Result := Result + HTTPEncode(UTF8Encode(s[Idx]));
+
+      end;
+  end;
+end;
+
+
+
+end.

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/04/17 10:12:30.000.250,=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:12:56.045,=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:14:36.658,D:\Delphi_SRC\淘宝优惠券\src\185优惠券采集器\pasMain.pas=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:14:36.658,D:\Delphi_SRC\淘宝优惠券\src\185优惠券采集器\pasMain.dfm=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2017/06/15 15:15:40.247,D:\Delphi_SRC\淘宝优惠券\src\Acquisition\Acquisition.dproj=C:\Users\38477\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/06/15 15:15:55.598,D:\Delphi_SRC\淘宝优惠券\src\Acquisition\pasMain.dfm=D:\Delphi_SRC\淘宝优惠券\src\185优惠券采集器\pasMain.dfm</Transaction>
+    <Transaction>2017/06/15 15:15:55.598,D:\Delphi_SRC\淘宝优惠券\src\Acquisition\pasMain.pas=D:\Delphi_SRC\淘宝优惠券\src\185优惠券采集器\pasMain.pas</Transaction>
+    <Transaction>2017/06/15 15:31:13.225,=D:\Delphi_SRC\淘宝优惠券\src\Acquisition\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:31:55.615,D:\Delphi_SRC\淘宝优惠券\src\Public_pas\TOPAPI.pas=D:\Delphi_SRC\淘宝优惠券\src\Acquisition\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:42:30.766,=D:\Delphi_SRC\淘宝优惠券\src\Acquisition\Unit1.pas</Transaction>
+    <Transaction>2017/06/15 15:49:40.069,D:\Delphi_SRC\淘宝优惠券\src\Public_pas\Alimama_Const.pas=D:\Delphi_SRC\淘宝优惠券\src\Acquisition\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

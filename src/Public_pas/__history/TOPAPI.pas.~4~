@@ -1,0 +1,122 @@
+unit TOPAPI;
+
+interface
+uses
+  Alimama_Const,
+  IdHTTP, Web.HTTPApp, IdHashMessageDigest, System.Classes;
+
+  function IDHTTP_Get(const AddParams:String): string;
+
+
+implementation
+
+function  URLEncode(const S:String; const InQueryString: Boolean): string;
+var
+  Idx: Integer;
+begin
+  Result := '';
+  for Idx := 1 to Length(S) do
+  begin
+      case S[Idx] of
+        'A'..'Z', 'a'..'z', '0'..'9', '-', '_', '.', '=', '&', '%', '/':
+          Result := Result + S[Idx];
+        ' ':
+          if InQueryString then
+            Result := Result + '+'
+          else
+            Result := Result + '%20';
+        ',':
+           Result :=Result + '%2C';
+        ':':
+           Result := Result + '%3A';
+      else
+          Result := Result + HTTPEncode(UTF8Encode(s[Idx]));
+
+      end;
+  end;
+end;
+
+function IDHTTP_Get(const AddParams:String): string;
+var
+  tmpidHttp : TIdHTTP;
+  i : Integer;
+
+  AHttpReponseContent : TMemoryStream;
+begin
+  tmpidHttp := TIdHTTP.Create(nil);
+  AHttpReponseContent := TMemoryStream.Create;
+  try
+    //idhttp配置
+    tmpidHttp.ReadTimeout:=0;
+    tmpidHttp.AllowCookies:=True;
+    tmpidHttp.ProxyParams.BasicAuthentication:=False;
+    tmpidHttp.ProxyParams.ProxyPort:=0;
+    tmpidHttp.Request.ContentLength:=-1;
+    tmpidHttp.Request.ContentRangeEnd:=0;
+    tmpidHttp.Request.ContentRangeStart:=0;
+    tmpidHttp.Request.ContentType:='application/x-www-form-urlencoded';
+    tmpidHttp.Request.Accept:='text/html, */*';
+    tmpidHttp.Request.BasicAuthentication:=False;
+    tmpidHttp.Request.UserAgent:='Mozilla/3.0 (compatible; Indy Library)';
+    tmpidHttp.HTTPOptions:=[hoForceEncodeParams];
+
+    //业务参数配置
+    //tmpParams.Add('pid=' + Trim(edtPID.Text));
+    //tmpParams.Add('q=iphone数据线');
+    tmpParams.Add('fields=event_id,event_title,start_time,end_time');
+
+    //排序
+    tmpParams.Sort;
+    mmo1.Lines.Add(tmpParams.Text);
+    tmpMD5String := '';
+    //拼接参数名与参数值
+    for I := 0 to tmpParams.Count - 1 do
+      begin
+        if tmpParams.Names[i] <> '' then
+          begin
+            tmpMD5String := tmpMD5String + tmpParams.Names[i];
+            tmpMD5String := tmpMD5String + tmpParams.ValueFromIndex[i];
+          end
+        else
+          begin
+            Exit;
+          end;
+      end;
+    mmo1.Lines.Add(tmpMD5String);
+    tmpMD5String := Trim(edtAppSecret.Text) + tmpMD5String;
+    mmo1.Lines.Add(tmpMD5String);
+    //生成签名
+
+    tmpMD5sign := mymd5.HashStringAsHex(tmpMD5String, IndyTextEncoding_UTF8);
+    mmo1.Lines.Add(tmpMD5sign);
+
+    tmpParams.Add('sign=' + tmpMD5sign);
+    //拼装请求地址
+    for I := 0 to tmpParams.Count - 1 do
+      begin
+        if tmpParams.Names[i] <> '' then
+          begin
+            AHttpRequestURL := AHttpRequestURL +'&' + tmpParams[i];
+          end
+        else
+          begin
+            Exit;
+          end;
+      end;
+    mmo1.Lines.Add(AHttpRequestURL);
+    AHttpRequestURL := URLEncode(AHttpRequestURL, True);;
+    AHttpRequestURL := 'http://gw.api.taobao.com/router/rest?' + AHttpRequestURL;
+    mmo1.Lines.Add(AHttpRequestURL);
+
+    tmpidHttp.Get(AHttpRequestURL,AHttpReponseContent);
+     AHttpReponseContent.Position:=0;
+     mmo2.Lines.LoadFromStream(AHttpReponseContent);
+
+  finally
+    AHttpReponseContent.Free;
+    mymd5.Free;
+    tmpParams.Free;
+  end;
+end;
+
+end.
